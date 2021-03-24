@@ -25,8 +25,11 @@
     <div class="content">
         <h1>Timetable</h1>
         <table>
-            <tr>
-                <td th:text="${timetable.name}"></td>
+            <tr th:each="event : ${timetable.events}">
+                <td th:text="${event.day} + ': ' + ${event.time}"></td>
+                <td th:text="${event.name}"></td>
+                <td th:text="${event.place}"></td>
+                <td th:text="${event.teacher}"></td>
             </tr>
         </table>
     </div>
