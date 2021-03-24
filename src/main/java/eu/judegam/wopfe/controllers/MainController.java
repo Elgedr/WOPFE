@@ -26,10 +26,4 @@ public class MainController {
         return "mains/teacher_main";
     }
 
-    @GetMapping("/main/student")
-    public String student(Model model) {
-        return "mains/student_main";
-    }
-
-
 }

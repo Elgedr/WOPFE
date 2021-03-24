@@ -1,11 +1,14 @@
 package eu.judegam.wopfe.models.user;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import eu.judegam.wopfe.models.timetable.Timetable;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import java.util.ArrayList;
-import java.util.List;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 /**
  * Represent a student.
@@ -21,7 +24,10 @@ public class Student {
     private int studentClass;
     private String school;
     private String grades;
-    private String timetable;
+    @ManyToOne
+    @JoinColumn(name = "timetable_id", nullable = false)
+    @JsonIgnore
+    private Timetable timetable;
 
     public Long getId() {
         return id;
@@ -79,11 +85,11 @@ public class Student {
         this.grades = grades;
     }
 
-    public String getTimetable() {
+    public Timetable getTimetable() {
         return timetable;
     }
 
-    public void setTimetable(String timetable) {
+    public void setTimetable(Timetable timetable) {
         this.timetable = timetable;
     }
 
